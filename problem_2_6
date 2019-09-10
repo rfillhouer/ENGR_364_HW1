@@ -6,7 +6,6 @@ Ao = pi*(0.503^2)/4 %initial area sq inches
 A = [0.1984 0.1978 0.1963 0.1924 0.1875 0.1563 0.1307 0.1077] %plastic area sq inches
 
 
-
 se = pe / Ao %elastic stress, psi
 
 sp = pp ./ A %plastic stress, psi
@@ -16,14 +15,34 @@ dl = [4 6 10 13 23 28 36 89]/10000 %elongation
 
 ee1 = dl/2 %strain in units of inch/inch
 
-ee2 = (Ao-A)/Ao
+ee2 = (Ao-A)/Ao %plastic strain in 
+
+plot1 = subplot(2, 1, 1)
+plot2 =  subplot(2, 1, 2)
 
 
-
-plot(ee1, se)
+plot(plot1, ee1, se)
 hold on
-
-plot(ee2, sp)
+plot(plot1, ee2, sp)
 hold off
-% xlim([0 0.02])
+xlim([0 max(ee2)])
+
+
+plot(plot2, ee1, se)
+hold on
+plot(plot2, ee2, sp)
+hold off
+xlim([0 0.02])
+
+title(plot1,'Stress vs. Strain (scaled to max strain)')
+title(plot2,'Stress vs. Strain (scaled to 0.02 in/in)')
+
+xlabel(plot1,'Strain (in/in)')
+ylabel(plot1, 'Stress (psi)')
+
+xlabel(plot2,'Strain (in/in)')
+ylabel(plot2, 'Stress (psi)')
+
+
+
 
