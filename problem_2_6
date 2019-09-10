@@ -2,29 +2,28 @@ pe = 1000*[ 1   2   3     4    7  8.4   8.8  9.2]; %elastic load
 
 pp = 1000*[8.8 9.2 9.1  13.2 15.2 17.0 16.4 14.8]; %plastic load
 
-
-
-dl = [4 6 10 13 23 28 36 89]/10000 %elongation
-
-ee = dl/2 %elastic strain in units of inch/inch
-
-
-
-Ao = pi*0.5*0.503^2 %initial area sq inches
+Ao = pi*(0.503^2)/4 %initial area sq inches
 A = [0.1984 0.1978 0.1963 0.1924 0.1875 0.1563 0.1307 0.1077] %plastic area sq inches
 
 
 
-se = pe/Ao %elastic stress, psi
+se = pe / Ao %elastic stress, psi
 
-sp = pp/A %plastic stress, psi
+sp = pp ./ A %plastic stress, psi
+
+
+dl = [4 6 10 13 23 28 36 89]/10000 %elongation
+
+ee1 = dl/2 %strain in units of inch/inch
+
+ee2 = (Ao-A)/Ao
 
 
 
-plot(ee, se)
+plot(ee1, se)
 hold on
-plot(ee, sp)
-hold off
 
-xlim([0 0.02])
-ylim([0 max(sp)])
+plot(ee2, sp)
+hold off
+% xlim([0 0.02])
+
