@@ -17,8 +17,8 @@ ee1 = dl/2 %strain in units of inch/inch
 
 ee2 = (Ao-A)/Ao %plastic strain in 
 
-plot1 = subplot(2, 1, 1)
-plot2 =  subplot(2, 1, 2)
+plot1 = subplot(2, 1, 1);
+plot2 =  subplot(2, 1, 2);
 
 
 plot(plot1, ee1, se)
@@ -42,7 +42,3 @@ ylabel(plot1, 'Stress (psi)')
 
 xlabel(plot2,'Strain (in/in)')
 ylabel(plot2, 'Stress (psi)')
-
-
-
-
